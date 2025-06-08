@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Form styles */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* Button styles */
+button {
+  @apply px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+}
+
+/* PDF Viewer styles */
+.react-pdf__Document {
+  @apply w-full h-full;
+}
+
+.react-pdf__Page {
+  @apply w-full h-full;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Print styles */
+@media print {
+  /* Hide everything except the resume template */
+  body > *:not(.resume-template) {
+    display: none !important;
+  }
+
+  /* Reset any background colors and shadows */
+  .resume-template {
+    box-shadow: none !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    height: auto !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure the template takes full page */
+  .resume-template > div {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Remove any extra margins and padding */
+  @page {
+    margin: 0;
+    padding: 0;
+    size: A4;
+  }
+
+  /* Hide any elements with class 'no-print' */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure text is black for better printing */
+  .resume-template * {
+    color: black !important;
+  }
+
+  /* Ensure background colors print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Page break styles */
+  .page-break-before {
+    page-break-before: always !important;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure sections don't break in the middle */
+  .section {
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure proper spacing between sections */
+  .section + .section {
+    margin-top: 1rem !important;
+  }
+} 
